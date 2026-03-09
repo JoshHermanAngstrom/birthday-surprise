@@ -532,16 +532,24 @@ function startCountdown() {
 
 // ===== STAGE 7: DISNEY THEME VIDEO =====
 const disneyVideo = document.getElementById('disney-video');
+const disneyTapOverlay = document.getElementById('disney-tap-overlay');
 
 function startDisneyVideo() {
-    disneyVideo.currentTime = 0;
-    playVideoWithSound(disneyVideo);
+    // Show the overlay — user tap will trigger playback (required on iOS)
+    disneyTapOverlay.classList.remove('hidden');
 
     disneyVideo.addEventListener('ended', () => {
         showStage('reveal-stage');
         createSparkles();
     }, { once: true });
 }
+
+disneyTapOverlay.addEventListener('click', () => {
+    disneyTapOverlay.classList.add('hidden');
+    disneyVideo.currentTime = 0;
+    disneyVideo.muted = false;
+    disneyVideo.play();
+});
 
 // ===== SPARKLES (Reveal stage) =====
 function createSparkles() {
