@@ -516,8 +516,13 @@ function startCountdown() {
             clearInterval(interval);
             numberEl.textContent = '0';
             barEl.style.width = '100%';
-            // Show the continue button — her tap will be the user gesture for video playback
-            document.getElementById('countdown-continue').classList.remove('hidden');
+            // Swap countdown number for the continue button
+            setTimeout(() => {
+                numberEl.style.display = 'none';
+                barEl.parentElement.style.display = 'none';
+                document.querySelector('.countdown-subtitle').textContent = 'Your gift is ready!';
+                document.getElementById('countdown-continue').classList.add('visible');
+            }, 500);
             return;
         }
 

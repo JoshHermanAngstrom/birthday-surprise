@@ -1013,7 +1013,7 @@ body {
 
 .countdown-continue-btn {
     margin-top: 28px;
-    padding: 16px 32px;
+    padding: 18px 32px;
     border: none;
     border-radius: 14px;
     background: linear-gradient(135deg, var(--pink-500), var(--pink-600));
@@ -1024,17 +1024,21 @@ body {
     cursor: pointer;
     width: 100%;
     box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
-    transition: all 0.3s ease;
-    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+    pointer-events: none;
+}
+
+.countdown-continue-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    animation: pulseText 2s ease-in-out infinite;
 }
 
 .countdown-continue-btn:hover {
-    transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
-}
-
-.countdown-continue-btn.hidden {
-    display: none;
 }
 
 /* ===== STAGE 7: DISNEY THEME VIDEO ===== */
