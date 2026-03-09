@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Overlay for runaway button so it's never clipped -->
+    <div id="btn-overlay"></div>
+
+    <!-- STAGE 1: Mock Login -->
+    <div id="login-stage" class="stage active">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="avatar-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                        </svg>
+                    </div>
+                    <h1>Welcome</h1>
+                    <p class="login-subtitle">Please sign in to continue</p>
+                </div>
+                <form id="login-form" autocomplete="off">
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="Who is the greatest most handsome man in the world?" required>
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" placeholder="When was the most beautiful incredible woman born?" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <span>Sign In</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- STAGE 2: Maze Challenge -->
+    <div id="maze-stage" class="stage">
+        <div class="maze-scene">
+            <div class="maze-card">
+                <div class="maze-header-text">
+                    <h2>One more thing...</h2>
+                    <p>Navigate to the exit to unlock your surprise!</p>
+                </div>
+                <div class="maze-canvas-wrap">
+                    <canvas id="mazeCanvas"></canvas>
+                </div>
+                <div class="maze-stats">
+                    <div class="maze-stat">
+                        <span class="maze-stat-label">MOVES</span>
+                        <span class="maze-stat-value" id="maze-moves">0</span>
+                    </div>
+                    <div class="maze-stat">
+                        <span class="maze-stat-label">TIME</span>
+                        <span class="maze-stat-value" id="maze-timer">00:00</span>
+                    </div>
+                </div>
+                <div class="maze-controls">
+                    <p class="maze-hint">Use arrow keys or swipe to move</p>
+                    <div class="maze-touch-btns">
+                        <button class="maze-dir-btn" data-dir="up">&#9650;</button>
+                        <div class="maze-dir-row">
+                            <button class="maze-dir-btn" data-dir="left">&#9664;</button>
+                            <button class="maze-dir-btn" data-dir="down">&#9660;</button>
+                            <button class="maze-dir-btn" data-dir="right">&#9654;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+
+    <!-- STAGE 3: Kiss Gate -->
+    <div id="kiss-stage" class="stage">
+        <div class="kiss-scene">
+            <div class="kiss-card">
+                <div class="kiss-icon">💋</div>
+                <h2 class="kiss-title">Finally, to unlock your gift...</h2>
+                <p class="kiss-subtitle">You have to give your incredible husband a kiss</p>
+                <button class="kiss-btn" id="kiss-btn">Click to confirm kiss received</button>
+                <p class="kiss-response" id="kiss-response"></p>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+
+    <!-- STAGE 4: Gift Box -->
+    <div id="gift-stage" class="stage">
+        <div class="gift-scene">
+            <h2 class="gift-prompt">You have a gift! Tap to open...</h2>
+            <div class="gift-wrapper" id="gift-box">
+                <div class="gift-box-3d">
+                    <!-- Lid -->
+                    <div class="lid">
+                        <div class="lid-top"></div>
+                        <div class="lid-front"></div>
+                        <div class="lid-back"></div>
+                        <div class="lid-left"></div>
+                        <div class="lid-right"></div>
+                        <div class="bow">
+                            <div class="bow-loop bow-left"></div>
+                            <div class="bow-loop bow-right"></div>
+                            <div class="bow-knot"></div>
+                        </div>
+                    </div>
+                    <!-- Box base -->
+                    <div class="box-base">
+                        <div class="box-front"></div>
+                        <div class="box-back"></div>
+                        <div class="box-left"></div>
+                        <div class="box-right"></div>
+                        <div class="box-bottom"></div>
+                        <div class="ribbon-v"></div>
+                        <div class="ribbon-h"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="confetti-container" id="confetti-container"></div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+
+    <!-- STAGE 5: Rickroll -->
+    <div id="rickroll-stage" class="stage">
+        <div class="rickroll-scene">
+            <video id="rickroll-video" playsinline webkit-playsinline preload="auto">
+                <source src="rickroll.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- STAGE 6: Countdown / Apology -->
+    <div id="countdown-stage" class="stage">
+        <div class="countdown-scene">
+            <div class="countdown-card">
+                <h2 class="countdown-title">Okay I promise that was the last one!!</h2>
+                <p class="countdown-subtitle">Retrieving gift...</p>
+                <div class="countdown-number" id="countdown-number">5</div>
+                <div class="countdown-bar-track">
+                    <div class="countdown-bar-fill" id="countdown-bar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+
+    <!-- STAGE 7: Disney Theme Video -->
+    <div id="disney-video-stage" class="stage">
+        <div class="disney-video-scene">
+            <video id="disney-video" playsinline webkit-playsinline preload="auto">
+                <source src="disney-theme.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- STAGE 8: The Reveal -->
+    <div id="reveal-stage" class="stage">
+        <div class="reveal-container">
+            <div class="castle-bg"></div>
+            <div class="sparkle-field" id="sparkle-field"></div>
+            <div class="reveal-content">
+                <div class="reveal-card">
+                    <p class="reveal-pre">Happy 30th Birthday!</p>
+                    <h1 class="reveal-title">You're Going To</h1>
+                    <h2 class="reveal-destination">Disneyland Paris!</h2>
+                    <div class="reveal-castle-icon">
+                        <img src="disney-castle-transparent-8.png" alt="Disney Castle">
+                    </div>
+                    <div class="reveal-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                            <div class="detail-text">
+                                <span class="detail-label">Dates</span>
+                                <span class="detail-value">3rd - 6th March 2027</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <div class="detail-text">
+                                <span class="detail-label">Staying At</span>
+                                <span class="detail-value">Disney's Hotel New York - The Art of Marvel</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                                </svg>
+                            </div>
+                            <div class="detail-text">
+                                <span class="detail-label">With Love</span>
+                                <span class="detail-value">Here's to the most magical birthday ever!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
