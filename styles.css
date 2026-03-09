@@ -1011,6 +1011,32 @@ body {
     transition: width 1s linear;
 }
 
+.countdown-continue-btn {
+    margin-top: 28px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--pink-500), var(--pink-600));
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.countdown-continue-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+}
+
+.countdown-continue-btn.hidden {
+    display: none;
+}
+
 /* ===== STAGE 7: DISNEY THEME VIDEO ===== */
 #disney-video-stage {
     background: #000;
@@ -1031,40 +1057,6 @@ body {
     background: #000;
 }
 
-.disney-tap-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.disney-tap-overlay.hidden {
-    display: none;
-}
-
-.disney-tap-prompt {
-    text-align: center;
-    color: white;
-    animation: pulseText 2s ease-in-out infinite;
-}
-
-.disney-play-icon {
-    font-size: 64px;
-    margin-bottom: 12px;
-}
-
-.disney-tap-prompt p {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {

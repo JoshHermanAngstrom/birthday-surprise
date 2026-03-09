@@ -516,10 +516,8 @@ function startCountdown() {
             clearInterval(interval);
             numberEl.textContent = '0';
             barEl.style.width = '100%';
-            setTimeout(() => {
-                showStage('disney-video-stage');
-                startDisneyVideo();
-            }, 600);
+            // Show the continue button — her tap will be the user gesture for video playback
+            document.getElementById('countdown-continue').classList.remove('hidden');
             return;
         }
 
@@ -532,23 +530,18 @@ function startCountdown() {
 
 // ===== STAGE 7: DISNEY THEME VIDEO =====
 const disneyVideo = document.getElementById('disney-video');
-const disneyTapOverlay = document.getElementById('disney-tap-overlay');
 
-function startDisneyVideo() {
-    // Show the overlay — user tap will trigger playback (required on iOS)
-    disneyTapOverlay.classList.remove('hidden');
+document.getElementById('countdown-continue').addEventListener('click', () => {
+    // This runs inside a direct user tap — iOS allows video.play() here
+    showStage('disney-video-stage');
+    disneyVideo.currentTime = 0;
+    disneyVideo.muted = false;
+    disneyVideo.play();
 
     disneyVideo.addEventListener('ended', () => {
         showStage('reveal-stage');
         createSparkles();
     }, { once: true });
-}
-
-disneyTapOverlay.addEventListener('click', () => {
-    disneyTapOverlay.classList.add('hidden');
-    disneyVideo.currentTime = 0;
-    disneyVideo.muted = false;
-    disneyVideo.play();
 });
 
 // ===== SPARKLES (Reveal stage) =====
